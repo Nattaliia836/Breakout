@@ -5,9 +5,7 @@
 using namespace sf;
 
 PlatformClass::PlatformClass() {
-
 	RectangleShape rectangle(Vector2f(200.f, 20.f));
-
 	platform = rectangle;
 	platform.move(((MAX_WIGTH - PLATFORM_WIGTH) / 2), PLATFORM_LEVEL);
 	platform.setFillColor(Color::White);
@@ -24,8 +22,6 @@ void PlatformClass::movePlatform() {
 			platform.move(PLATFORM_SPEED, 0);
 		}
 	}
-
-	//PLATFORM_POSITION_X = platform.getPosition().x;
 }
 
 RectangleShape PlatformClass::getPlatform() {
