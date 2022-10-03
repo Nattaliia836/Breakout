@@ -5,19 +5,13 @@
 using namespace sf;
 
 BallClass::BallClass() {
-
 	ball.setRadius(BALL_RADIUS);
 	ball.setFillColor(Color(200, 200, 200));
-
 	ball.setOutlineThickness(2.f);
 	ball.setOutlineColor(Color(255, 255, 255, 150));
 	ball.move(500, 300);
-
 	directionX = "right";
 	directionY = "top";
-
-	//positionX = ball.getPosition().x;
-	//positionY = ball.getPosition().y;
 }
 
 void BallClass::fillPositionPlatform(float position) {
@@ -26,7 +20,6 @@ void BallClass::fillPositionPlatform(float position) {
 
 void BallClass::moveBall() {
 	if(isMoving) {
-
 		if (ball.getPosition().x > (START_BLOCK_POSITION_X - 2 * BALL_RADIUS) && 
 			ball.getPosition().x < MAX_WIGTH - START_BLOCK_POSITION_X  &&
 			ball.getPosition().y >(START_BLOCK_POSITION_Y - 2 * BALL_RADIUS) &&
@@ -35,9 +28,7 @@ void BallClass::moveBall() {
 			hittingBlocksRange();
 
 		}
-
 		if (ball.getPosition().y > PLATFORM_LEVEL - BALL_RADIUS) {
-			//std::cout << "Hello " << std::endl;
 			if (ball.getPosition().x > platformPositionX && ball.getPosition().x < platformPositionX + PLATFORM_WIGTH) {
 				directionY = "top";
 
@@ -50,8 +41,8 @@ void BallClass::moveBall() {
 					directionX = "right";
 				}
 			}
-		}		
-
+		}	
+		
 		if (ball.getPosition().x < (MAX_WIGTH - 2 * BALL_RADIUS) && ball.getPosition().x > 0) {
 			if (directionX == "right") {
 				ball.move((BALL_SPEED + plusSpeed), 0);	
@@ -63,7 +54,6 @@ void BallClass::moveBall() {
 		else {
 			hittingWall(directionX);
 		}
-
 
 		if (ball.getPosition().y < (MAX_HEIGHT - 2 * BALL_RADIUS) && ball.getPosition().y > 0) {
 			if (directionY == "bottom") {
@@ -112,7 +102,6 @@ void BallClass::hittingWall(std::string direction) {
 }
 
 void BallClass::hittingBlocksRange() {
-	//for (auto blockStructObject : blocksVector) {
 	for (int i = 0; i < blocksVector.size(); i++) {
 		if (blocksVector[i].isAlive == 1) {
 
@@ -222,7 +211,3 @@ bool BallClass::isTimeToUpdate() {
 std::vector<BlockStruct> BallClass::returnVectorData() {
 	return blocksVector;
 }
-
-
-
-
